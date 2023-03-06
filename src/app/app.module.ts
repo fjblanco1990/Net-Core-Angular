@@ -7,38 +7,43 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //componentes
 import { AppComponent } from './app.component';
-import { InicioComponent } from './Components/inicio/inicio.component';
-import { BienvenidaComponent } from './Components/inicio/bienvenida/bienvenida.component';
-import { LoginComponent } from './Components/inicio/login/login.component';
-import { RegisterComponent } from './Components/inicio/register/register.component';
-import { ValidatorRequiredComponent } from './Shared/utils/validators/validator-required/validator-required.component';
-import { ValidatorMinComponent } from './Shared/utils/validators/validator-min/validator-min.component';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { CambiarPasswordComponent } from './Components/dashboard/cambiar-password/cambiar-password.component';
-import { CuestionariosComponent } from './Components/dashboard/cuestionarios/cuestionarios.component';
-import { NavbarComponent } from './Components/dashboard/navbar/navbar.component';
+// import { InicioComponent } from './Components/inicio/inicio.component';
+// import { BienvenidaComponent } from './Components/inicio/bienvenida/bienvenida.component';
+// import { LoginComponent } from './Components/inicio/login/login.component';
+// import { RegisterComponent } from './Components/inicio/register/register.component';
+// import { ValidatorRequiredComponent } from './Shared/utils/validators/validator-required/validator-required.component';
+// import { ValidatorMinComponent } from './Shared/utils/validators/validator-min/validator-min.component';
+// import { DashboardComponent } from './Components/dashboard/dashboard.component';
+// import { CambiarPasswordComponent } from './Components/dashboard/cambiar-password/cambiar-password.component';
+// import { CuestionariosComponent } from './Components/dashboard/cuestionarios/cuestionarios.component';
+// import { NavbarComponent } from './Components/dashboard/navbar/navbar.component';
+import { LoadingComponent } from './Shared/utils/loading/loading.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent,
-    BienvenidaComponent,
-    LoginComponent,
-    RegisterComponent,
-    ValidatorRequiredComponent,
-    ValidatorMinComponent,
-    DashboardComponent,
-    CambiarPasswordComponent,
-    CuestionariosComponent,
-    NavbarComponent
+    // InicioComponent,
+    // BienvenidaComponent,
+    // LoginComponent,
+    // RegisterComponent,
+    // ValidatorRequiredComponent,
+    // ValidatorMinComponent,
+    // DashboardComponent,
+    // CambiarPasswordComponent,
+    // CuestionariosComponent,
+    // NavbarComponent,
+    // LoadingComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
