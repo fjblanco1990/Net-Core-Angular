@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center" style="padding: 20px;">
+                <h3>Registrase</h3>
+                <br>
+                <form [formGroup]="registerForm" (ngSubmit)="registar()">
+                    <div class="form-group aling-start">
+                        <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario">
+                        <app-validator-required [form_Errors]="registerForm.controls.usuario.errors"
+                            [form_touche]="registerForm.controls.usuario.touched"
+                            [msjValidation]="'El usuario es requerido'">
+                        </app-validator-required>
+                    </div>
+                    <div class="form-group aling-start">
+                        <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" minlength="4">
+                        <app-validator-required [form_Errors]="registerForm.controls.password.errors?.required"
+                            [form_touche]="registerForm.controls.password.touched"
+                            [msjValidation]="'El password es requerido'">
+                        </app-validator-required>
+                        <app-validator-min 
+                            [form_touche]="registerForm.controls.password.touched"
+                            [form_error_util]="registerForm.controls.password.errors?.minlength"
+                            [msjValidation]="'El password debe ser mayor a 4 letras'">
+                        </app-validator-min>
+                    </div>
+                    <div class="form-group aling-start">
+                        <input type="password" class="form-control" placeholder="Repetir contraseña" formControlName="passwordRepeat">
+                        <app-validator-required [form_Errors]="registerForm.controls.passwordRepeat.errors"
+                            [form_touche]="registerForm.controls.passwordRepeat.touched"
+                            [msjValidation]="'El usuario es requerido'">
+                        </app-validator-required>
+                        <br>
+                        <app-validator-min 
+                            [form_error_util]="registerForm.errors?.notSame"
+                            [form_touche]="registerForm.controls.passwordRepeat.touched"
+                            [msjValidation]="'Las contraseñas no coinciden'">
+                        </app-validator-min>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary mr-2 btn-action" type="submit" [disabled]="registerForm.invalid">Registrar</button>
+                        <button class="btn btn-secondary mr-2" routerLink="/inicio/login">Volver</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
