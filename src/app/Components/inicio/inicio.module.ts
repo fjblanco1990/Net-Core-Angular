@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 import { InicioRoutingModule } from './inicio-routing.module';
 import { InicioComponent } from './inicio.component';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
@@ -25,7 +25,8 @@ import { LoadingComponent } from 'src/app/Shared/utils/loading/loading.component
   imports: [
     CommonModule,
     InicioRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     ValidatorMinComponent,
