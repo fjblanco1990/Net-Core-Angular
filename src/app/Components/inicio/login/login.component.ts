@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/Models/usuario.model';
+import { NotificacionesService } from 'src/app/Services/notificaciones.service';
 import Swal from 'sweetalert2';
+import { LoginService } from '../services/login.service';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [NotificacionesService]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   usuarioModel!: UsuarioModel;
   loading: boolean = false;
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private _notificaciones: NotificacionesService, private _login: LoginService) { }
 
   ngOnInit(): void {
     this.inicializarFormulario();
@@ -26,32 +29,20 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
     this.loading = true;
-    setTimeout(( )=> {
-      if (usuario.nombreUsuario === 'fblanco' && usuario.password === 'Blanco123') {
-        this.router.navigateByUrl('/dashboard')
-      } else {
-  
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-  
-        Toast.fire({
-          icon: 'error',
-          title: 'Usuario o contraseña incorrectas'
-        })
-      }
+
+    this._login.Login(usuario).subscribe(result => {
+
+        this.router.navigateByUrl('/dashboard');
+        this.loading = false;
+        this._login.setLocalStorage(result);
+      
+    }, error => {
       this.loading = false;
-    }, 3000);
-  
+      this._notificaciones.Error('Usuario o password incorrectas');
+    });
+
   }
+
 
   inicializarFormulario() {
     this.loginForm = this.fb.group({

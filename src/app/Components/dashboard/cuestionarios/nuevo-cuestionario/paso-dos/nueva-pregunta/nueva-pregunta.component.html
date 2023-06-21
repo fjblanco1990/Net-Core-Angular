@@ -1,0 +1,36 @@
+<form [formGroup]="nuevaPregunta">
+    <div class="form-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Ingrese pregunta" formControlName="titulo">
+        <app-validator-required [form_Errors]="nuevaPregunta.controls.titulo.errors"
+            [form_touche]="nuevaPregunta.controls.titulo.touched"
+            [msjValidation]="'El titulo es requerido'">
+        </app-validator-required>
+    </div>
+    <div  [formGroup]="asnwerForm" >
+        <div  *ngFor="let answer of getAnswer.controls; let i = index" [formGroup]="answer">
+            <div class="input-group mt-2" >
+                <input type="text" class="form-control" placeholder="Respuesta {{i + 1}}" formControlName="descripcion">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="radio" name="esCorrecta" (change)="setRespuestaValida(i)" [value]="i" formControlName="esCorrecta">
+                    </div>
+                    <button>
+                        <span class="material-icons delete-icon" (click)="deleteAnswer(i)"> delete</span>
+                    </button>
+                </div>
+            </div>
+            <app-validator-required [form_Errors]="answer.controls.descripcion.errors"
+                [form_touche]="answer.controls.descripcion.touched"
+                [msjValidation]="'La descripcion es requerida'">
+            </app-validator-required>
+        </div>
+    </div>
+    <span class="material-icons add-icon mt-2" (click)="addAnswer()">
+        add
+    </span>
+    <pre>{{nuevaPregunta.value | json}}</pre>
+    <br>
+    <br>
+    <pre>{{pregunta | json }}</pre>
+    <button class="btn btn-primary float-right" [disabled]="nuevaPregunta.invalid" (click)="AgregarPregunta()">Agregar</button>
+</form>

@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <h3 class="text-center">
+            Datos del cuestionario
+        </h3>
+        <br>
+        <form [formGroup]="datosCuestionario" (ngSubmit)="PasoUno()">
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="titulo" placeholder="Ingrese titulo del cuestionario">
+                <app-validator-required [form_Errors]="datosCuestionario.controls.titulo.errors"
+                    [form_touche]="datosCuestionario.controls.titulo.touched"
+                    [msjValidation]="'El titulo es requerido'">
+                </app-validator-required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" formControlName="descripcion" placeholder="Ingrese descripcion del cuestionario"></textarea>
+                <app-validator-required [form_Errors]="datosCuestionario.controls.descripcion.errors"
+                    [form_touche]="datosCuestionario.controls.descripcion.touched"
+                    [msjValidation]="'La descripcion es requerido'">
+                </app-validator-required>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success mr-2" [disabled]="datosCuestionario.invalid" >Siguiente</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -12,7 +12,11 @@ const routes: Routes = [
     children: [
       { path: '', component: BienvenidaComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      {
+        path: 'list-cuestionario',
+        loadChildren: () => import('./list-cuestionarios/list-cuestionarios.module').then(module => module.ListCuestionariosModule)
+      },
     ]
   },
 ];

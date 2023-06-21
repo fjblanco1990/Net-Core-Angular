@@ -10,7 +10,7 @@ import { ValidatorRequiredComponent } from 'src/app/Shared/utils/validators/vali
 import { ValidatorMinComponent } from 'src/app/Shared/utils/validators/validator-min/validator-min.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from 'src/app/Shared/utils/loading/loading.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,11 +26,13 @@ import { LoadingComponent } from 'src/app/Shared/utils/loading/loading.component
     CommonModule,
     InicioRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     ValidatorMinComponent,
-    ValidatorRequiredComponent
+    ValidatorRequiredComponent,
+    LoadingComponent
   ]
 })
 export class InicioModule { }

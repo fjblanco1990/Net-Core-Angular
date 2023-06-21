@@ -7,3 +7,19 @@
 .aling-start {
     text-align: start !important;
 }
+
+.option-pointer:hover {
+    cursor: pointer !important;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-siguiente {
+    background-color: #F05F44 !important;
+    border-color: #F05F44 !important;
+}
